@@ -27,7 +27,7 @@
 
             <p><strong class="text-secondary">Start Date:</strong> {{ \Carbon\Carbon::parse($task->start_date)->format('d M, Y') }}</p>
             <p><strong class="text-secondary">End Date:</strong> {{ \Carbon\Carbon::parse($task->end_date)->format('d M, Y') }}</p>
-                        <p><strong class="text-secondary">Assigned To:</strong> {{ $task->assignedUser->name ?? 'Unassigned' }}</p>
+            <p><strong class="text-secondary">Assigned To:</strong> {{ $task->assignedUser->name ?? 'Unassigned' }}</p>
             <p><strong class="text-secondary">Created By:</strong> {{ $task->creator->name ?? 'Unknown' }}</p>
 
         </div>

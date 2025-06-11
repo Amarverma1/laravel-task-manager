@@ -63,9 +63,9 @@
     <div class="mt-5">
         <h3 class="h4">My Created Tasks (List View)</h3>
         @if($myTasks->isEmpty())
-            <div class="alert alert-info">
-                You haven't created any tasks yet.
-            </div>
+        <div class="alert alert-info">
+            You haven't created any tasks yet.
+        </div>
         @else
         <table class="table table-striped table-bordered">
             <thead>
