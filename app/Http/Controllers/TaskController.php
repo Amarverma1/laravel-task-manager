@@ -14,9 +14,12 @@ class TaskController extends Controller
 
     public function index()
     {
-        $tasks = Task::where('user_id', Auth::id())->get();
-        return view('tasks.index', compact('tasks'));
+        $tasks = Task::where('assigned_to', auth()->id())->with('creator')->get();
+        $myTasks = Task::where('user_id', auth()->id())->with(['assignedUser'])->get();
+        return view('tasks.index', compact('tasks', 'myTasks'));
     }
+
+
 
     public function create()
     {
@@ -52,14 +55,17 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
+        $task->load('creator', 'assignedUser');  // load relationships
         return view('tasks.show', compact('task'));
     }
+
 
     public function edit(Task $task)
     {
         $users = User::all();
         return view('tasks.edit', compact('task', 'users'));
     }
+
 
     public function update(Request $request, Task $task)
     {

@@ -25,6 +25,9 @@
                 @csrf
                 @method('PUT')
 
+                {{-- Hidden creator --}}
+                <input type="hidden" name="user_id" value="{{ $task->user_id }}">
+
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" name="title" class="form-control" required value="{{ old('title', $task->title) }}">
@@ -58,10 +61,10 @@
 
                 <div class="mb-3">
                     <label class="form-label">Assign To</label>
-                    <select name="user_id" class="form-select" required>
+                    <select name="assigned_to" class="form-select" required>
                         <option value="">-- Select User --</option>
                         @foreach($users as $user)
-                        <option value="{{ $user->id }}" {{ $task->user_id == $user->id ? 'selected' : '' }}>
+                        <option value="{{ $user->id }}" {{ $task->assigned_to == $user->id ? 'selected' : '' }}>
                             {{ $user->name }}
                         </option>
                         @endforeach
